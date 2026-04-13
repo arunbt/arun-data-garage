@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Sentinel - Mission Control</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="liquid-ether.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="text-slate-300 font-mono min-h-screen p-8" style="background-color: #060010;">
+    <div id="bg-container" style="position: fixed; inset: 0; z-index: -1;"></div>
+    <div class="max-w-4xl mx-auto">
+        <header class="mb-10 text-center">
+            <h1 class="text-4xl font-bold text-purple-400 tracking-widest drop-shadow-[0_0_10px_rgba(192,132,252,0.8)]">API SENTINEL</h1>
+            <p class="text-slate-500 mt-2 text-sm uppercase tracking-widest">Mission Control Dashboard</p>
+        </header>
+
+        <main class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <section class="bg-slate-800/50 p-6 rounded-lg border border-slate-700 shadow-xl backdrop-blur-sm">
+                <h2 class="text-xl text-purple-300 mb-4 border-b border-slate-700 pb-2">COMMAND UPLINK</h2>
+                <form id="checkForm" class="space-y-4">
+                    <div>
+                        <label for="url" class="block text-xs uppercase text-slate-400 mb-1">Target Coordinates (URL)</label>
+                        <input type="url" id="url" required placeholder="https://api.example.com" 
+                            class="w-full bg-slate-900 border border-slate-600 text-white p-3 rounded focus:outline-none focus:border-purple-400 focus:ring-1 focus:ring-purple-400 transition-all font-mono">
+                    </div>
+                    <button type="submit" id="submitBtn"
+                        class="w-full bg-purple-900/50 hover:bg-purple-800 text-purple-300 border border-purple-500 p-3 rounded uppercase tracking-wider font-bold transition-all hover:drop-shadow-[0_0_8px_rgba(192,132,252,0.5)] cursor-pointer">
+                        Execute Scan
+                    </button>
+                    <div id="loadingIndicator" class="hidden text-center text-purple-400 animate-pulse mt-4">
+                        Scanning target...
+                    </div>
+                </form>
+
+                <div id="latestResult" class="mt-8 hidden">
+                    <!-- Result will be injected here -->
+                </div>
+            </section>
+
+            <section class="bg-slate-800/50 p-6 rounded-lg border border-slate-700 shadow-xl backdrop-blur-sm flex flex-col h-full min-h-[300px]">
+                <h2 class="text-xl text-purple-300 mb-4 border-b border-slate-700 pb-2">TELEMETRY LOGS</h2>
+                <div id="historyList" class="space-y-3 overflow-y-auto flex-1">
+                    <!-- History logs will be injected here -->
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        if (window.initLiquidEther) initLiquidEther(document.getElementById('bg-container'));
+      });
+    </script>
+</body>
+</html>

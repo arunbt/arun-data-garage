@@ -1,0 +1,30 @@
+body {
+    font-family: 'JetBrains Mono', monospace;
+}
+
+.glow-green {
+    box-shadow: 0 0 10px rgba(34, 197, 94, 0.6), inset 0 0 5px rgba(34, 197, 94, 0.3);
+    border-color: rgba(34, 197, 94, 0.8);
+    color: #4ade80;
+}
+
+.glow-red {
+    box-shadow: 0 0 10px rgba(239, 68, 68, 0.6), inset 0 0 5px rgba(239, 68, 68, 0.3);
+    border-color: rgba(239, 68, 68, 0.8);
+    color: #f87171;
+}
+
+/* Custom scrollbar for telemetry logs */
+::-webkit-scrollbar {
+    width: 6px;
+}
+::-webkit-scrollbar-track {
+    background: rgba(30, 41, 59, 0.5);
+}
+::-webkit-scrollbar-thumb {
+    background: rgba(192, 132, 252, 0.3);
+    border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(192, 132, 252, 0.6);
+}
